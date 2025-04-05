@@ -9,8 +9,8 @@ from instr import *
 from second_win import TestWin
 
 class MainWin(QWidget):
-    def __init__(self): 
-        super().__init__() 
+    def __init__(self):
+        super().__init__()
         self.set_appear()
         self.initUI()
         self.connects()
