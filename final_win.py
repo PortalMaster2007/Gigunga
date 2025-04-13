@@ -24,9 +24,9 @@ class FinalWin(QWidget):
        self.setLayout(self.layout_line)
 
    def set_appear(self):
-        self.setWindowTitle(txt_title)
-        self.resize(1500, 900)
-        self.move(300, 50)
+        self.setWindowTitle(txt_finalwin)
+        self.resize(win_width, win_height)
+        self.move(win_x, win_y)
 
     def result(self):
         self.index = (4 * (int(self.exp.test1) + int(self.exp.test2) + int(self.exp.test3)))
