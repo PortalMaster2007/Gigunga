@@ -11,8 +11,8 @@ from instr import *
 from final_win import FinalWin
 
 class TestWin(QWidget):
-    def init(self): 
-        super().init() 
+    def __init__(self): 
+        super().__init__() 
         self.set_appear()
         self.initUI()
         self.connects()
