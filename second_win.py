@@ -100,9 +100,9 @@ class TestWin(QWidget):
         self.h_line.addLayout(self.r_line)       
         self.setLayout(self.h_line)
 
-   def next_click(self):
-       self.tw = FinalWin()
-       self.hide()
+    def next_click(self):
+        self.tw = FinalWin()
+        self.hide()
 
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)
