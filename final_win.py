@@ -16,8 +16,8 @@ class FinalWin(QWidget):
        self.show()
 
    def initUI(self):
-       self.workh_text = QLabel(txt_workheart)
-       self.index_text = QLabel(txt_index)
+       self.workh_text = QLabel(txt_workheart + self.results())
+       self.index_text = QLabel(txt_index + str(self.index))
        self.layout_line = QVBoxLayout()
        self.layout_line.addWidget(self.index_text, alignment = Qt.AlignCenter)
        self.layout_line.addWidget(self.workh_text, alignment = Qt.AlignCenter)        
@@ -28,5 +28,16 @@ class FinalWin(QWidget):
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
 
-    def result(self):
+    def results(self):
         self.index = (4*(int(self.exp.test1)+int(self.exp.test2)+int(self.exp.test3))-200)/10
+        if self.exp.age >= 15:
+            if self.index >= 15:
+                return txt_res1
+            elif self.index < 15 and self.index >= 11:
+                return txt_res2
+            elif self.index < 11 and self.index >= 6:
+                return txt_res3
+            elif self.index < 6 and self.index >= 0.5:
+                return txt_res4
+            elif self.index < 0.5:
+                return txt_res5
