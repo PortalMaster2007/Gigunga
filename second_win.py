@@ -7,11 +7,11 @@ from PyQt5.QtWidgets import (
         QPushButton, QLabel, QListWidget, QLineEdit
 )
 
+from instr import *
+from final_win import FinalWin
 class TestWin(QWidget):
-    def __init__(self):
-        super().__init__()
-        self.timer = QTimer()
-        self.text_timer = QLabel("")
+    def init(self): 
+        super().init() 
         self.set_appear()
         self.initUI()
         self.connects()
@@ -26,9 +26,10 @@ class TestWin(QWidget):
         self.timer.timeout.connect(self.timer2Event)
         self.timer.start(1500)
 
-    def timer_test3(self):
+    def timer_test(self):
         global time
         time = QTime(0, 1, 0)
+        self.timer = QTimer()
         self.timer.timeout.connect(self.timer3Event)
         self.timer.start(1000)
 
@@ -39,24 +40,22 @@ class TestWin(QWidget):
     def timer1Event(self):
         global time
         time = time.addSecs(-1)
-        self.text_timer.setText(time.toString("hh:mm:ss"))
+        self.text_timer.setText(time.toString("hh,mm,ss"))
         self.text_timer.setFont(QFont("Times", 36, QFont.Bold))
         self.text_timer.setStyleSheet("color: rgb(0,0,0)")
-        if time.toString("hh:mm:ss") == "00:00:00":
+        if time.toString("hh,mm,ss") == "00:00:00":
             self.timer.stop()
 
     def timer2Event(self):
-        self.text_timer.setText(time.toString("hh:mm:ss")[6:8])
+        self.text_timer.setText(time.toString("hh,mm,ss")[6:8])
 
     def timer3Event(self):
-        try:
-            seconds = int(time.toString("hh:mm:ss")[6:8])
-            if seconds >= 45 or seconds <= 15:
-                self.text_timer.setStyleSheet("color: rgb(0,255,0)")
-            else:
-                self.text_timer.setStyleSheet("color: rgb(0,0,0)")
-        except ValueError:
-            print("Ошибка преобразования секунд в integer")
+        if int(time.toString("hh,mm,ss")[6:8]) >= 45:
+            self.text_timer.setStyleSheet("color: rgb(0,255,0)")
+        elif int(time.toString("hh,mm,ss")[6:8]) <= 15:
+            self.text_timer.setStyleSheet("color: rgb(0,255,0)")
+        else:
+            self.text_timer.setStyleSheet("color: rgb(0,0,0)")
 
     def set_appear(self):
         self.setWindowTitle('Здоровье')
@@ -102,8 +101,8 @@ class TestWin(QWidget):
         self.setLayout(self.h_line)
 
    def next_click(self):
-        self.tw = FinalWin()
-        self.hide()
+       self.tw = FinalWin()
+       self.hide()
 
     def connects(self):
         self.btn_next.clicked.connect(self.next_click)

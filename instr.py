@@ -33,7 +33,3 @@ txt_age = 'Полных лет:'
 txt_finalwin = 'Результаты'
 txt_index = 'Индекс Руфье: '
 txt_workheart = 'Работоспособность сердца: '
-        time = Qtime(0, 0, 15)
-        time.addSecs(-1)
-        time.toString("hh:mm:ss")
-        zzz
