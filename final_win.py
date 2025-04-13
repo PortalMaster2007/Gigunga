@@ -7,21 +7,26 @@ from PyQt5.QtWidgets import (
       
 from instr import *
 class FinalWin(QWidget):
-   def __init__(self):
+   def __init__(self, exp):
        super().__init__()
+       self.exp = exp
+       self.result()
        self.initUI()
        self.set_appear()
        self.show()
 
    def initUI(self):
-       self.workh_text = QLabel('Работоспособность сердца: ')
-       self.index_text = QLabel('Индекс Руфье: ')
+       self.workh_text = QLabel(txt_workheart)
+       self.index_text = QLabel(txt_index)
        self.layout_line = QVBoxLayout()
        self.layout_line.addWidget(self.index_text, alignment = Qt.AlignCenter)
        self.layout_line.addWidget(self.workh_text, alignment = Qt.AlignCenter)        
        self.setLayout(self.layout_line)
 
    def set_appear(self):
-        self.setWindowTitle('Здоровье')
+        self.setWindowTitle(txt_title)
         self.resize(1500, 900)
         self.move(300, 50)
+
+    def result(self):
+        self.index = (4 * (int(self.exp.test1) + int(self.exp.test2) + int(self.exp.test3)))
