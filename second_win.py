@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import (
 
 from instr import *
 from final_win import FinalWin
+
 class TestWin(QWidget):
     def init(self): 
         super().init() 
@@ -17,9 +18,48 @@ class TestWin(QWidget):
         self.connects()
         self.show()
 
-    def timer_test(self):
-        self.timer.timeout.connect(self.timer1Event)
-        self.timer.start(1000)
+    def set_appear(self):
+        self.setWindowTitle(txt_title)
+        self.resize(1500, 900)
+        self.move(300, 50)
+
+    def initUI(self): 
+        self.btn_next = QPushButton(txt_sendresults)
+        self.btn_test1 = QPushButton(txt_starttest1)
+        self.btn_test2 = QPushButton(txt_starttest2)
+        self.btn_test3 = QPushButton(txt_starttest3)
+        self.text_name = QLabel(txt_name)
+        self.text_age = QLabel(txt_age)
+        self.text_test1 = QLabel(txt_test1)
+        self.text_test2 = QLabel(txt_test2)
+        self.text_test3 = QLabel(txt_test3)
+        self.text_timer = QLabel(txt_timer)
+        self.line_name = QLineEdit(txt_hintname)
+        self.line_age = QLineEdit(txt_hintage)
+        self.line_test1 = QLineEdit(txt_hinttest1)
+        self.line_test2 = QLineEdit(txt_hinttest2)
+        self.line_test3 = QLineEdit(txt_hinttest3)
+        self.l_line = QVBoxLayout()
+        self.r_line = QVBoxLayout()
+        self.h_line = QHBoxLayout()
+        self.r_line.addWidget(self.text_timer, alignment = Qt.AlignCenter)
+        self.l_line.addWidget(self.text_name, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_name, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.text_age, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_age, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.text_test1, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.btn_test1, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_test1, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.text_test2, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.btn_test2, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.text_test3, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.btn_test3, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_test2, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.line_test3, alignment = Qt.AlignLeft)
+        self.l_line.addWidget(self.btn_next, alignment = Qt.AlignCenter)
+        self.h_line.addLayout(self.l_line) 
+        self.h_line.addLayout(self.r_line)       
+        self.setLayout(self.h_line)
 
     def timer_sits(self):
         time = QTime(0, 0, 30)
@@ -30,7 +70,7 @@ class TestWin(QWidget):
         global time
         time = QTime(0, 1, 0)
         self.timer = QTimer()
-        self.timer.timeout.connect(self.timer3Event)
+        self.timer.timeout.connect(self.timer1Event)
         self.timer.start(1000)
 
     def timer_final(self):
@@ -56,49 +96,6 @@ class TestWin(QWidget):
             self.text_timer.setStyleSheet("color: rgb(0,255,0)")
         else:
             self.text_timer.setStyleSheet("color: rgb(0,0,0)")
-
-    def set_appear(self):
-        self.setWindowTitle('Здоровье')
-        self.resize(1500, 900)
-        self.move(300, 50)
-
-    def initUI(self): 
-        self.btn_next = QPushButton('Отправить результаты')
-        self.btn_test1 = QPushButton('Начать первый тест')
-        self.btn_test2 = QPushButton('Начать делать приседания')
-        self.btn_test3 = QPushButton('Начать финальный тест')
-        self.text_name = QLabel('Введите Ф.И.О.:')
-        self.text_age = QLabel('Полных лет:')
-        self.text_test1 = QLabel('Лягте на спину и замерьте пульс за 15 секунд. Нажмите кнопку "Начать первый тест", чтобы запустить таймер.\nРезультат запишите в соответствующее поле.')
-        self.text_test2 = QLabel('Выполните 30 приседаний за 45 секунд. Для этого нажмите кнопку "Начать делать приседания",\nчтобы запустить счетчик приседаний.')
-        self.text_test3 = QLabel('Лягте на спину и замерьте пульс сначала за первые 15 секунд минуты, затем за последние 15 секунд.\nНажмите кнопку "Начать финальный тест", чтобы запустить таймер.\nЗелёным обозначены секунды, в течение которых необходимо \nпроводить измерения, черным - секунды без замера пульсаций. Результаты запишите в соответствующие поля.')
-        self.text_timer = QLabel('')
-        self.line_name = QLineEdit("Ф.И.О.")
-        self.line_age = QLineEdit("0")
-        self.line_test1 = QLineEdit('0')
-        self.line_test2 = QLineEdit('0')
-        self.line_test3 = QLineEdit('0')
-        self.l_line = QVBoxLayout()
-        self.r_line = QVBoxLayout()
-        self.h_line = QHBoxLayout()
-        self.r_line.addWidget(self.text_timer, alignment = Qt.AlignCenter)
-        self.l_line.addWidget(self.text_name, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.line_name, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.text_age, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.line_age, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.text_test1, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.btn_test1, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.line_test1, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.text_test2, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.btn_test2, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.text_test3, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.btn_test3, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.line_test2, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.line_test3, alignment = Qt.AlignLeft)
-        self.l_line.addWidget(self.btn_next, alignment = Qt.AlignCenter)
-        self.h_line.addLayout(self.l_line) 
-        self.h_line.addLayout(self.r_line)       
-        self.setLayout(self.h_line)
 
     def next_click(self):
         self.tw = FinalWin()

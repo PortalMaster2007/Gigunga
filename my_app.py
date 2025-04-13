@@ -18,7 +18,7 @@ class MainWin(QWidget):
         
 
     def set_appear(self):
-        self.setWindowTitle('Здоровье')
+        self.setWindowTitle(txt_title)
         self.resize(1500, 900)
         self.move(300, 50)
 
