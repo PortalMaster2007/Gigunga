@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import (
       
 from instr import *
 class FinalWin(QWidget):
-   def __init__(self, exp):
+    def __init__(self, exp):
        super().__init__()
        self.exp = exp
        self.result()
@@ -15,7 +15,7 @@ class FinalWin(QWidget):
        self.set_appear()
        self.show()
 
-   def initUI(self):
+    def initUI(self):
        self.workh_text = QLabel(txt_workheart + self.results())
        self.index_text = QLabel(txt_index + str(self.index))
        self.layout_line = QVBoxLayout()
@@ -23,7 +23,7 @@ class FinalWin(QWidget):
        self.layout_line.addWidget(self.workh_text, alignment = Qt.AlignCenter)        
        self.setLayout(self.layout_line)
 
-   def set_appear(self):
+    def set_appear(self):
         self.setWindowTitle(txt_finalwin)
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
