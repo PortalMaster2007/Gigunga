@@ -62,13 +62,13 @@ class TestWin(QWidget):
         self.setLayout(self.h_line)
 
     def timer_sits(self):
-        time = QTime(0, 0, 30)
+        time = QTime(0, 0, 45)
         self.timer.timeout.connect(self.timer2Event)
         self.timer.start(1500)
 
     def timer_test(self):
         global time
-        time = QTime(0, 1, 0)
+        time = QTime(0, 0, 15)
         self.timer = QTimer()
         self.timer.timeout.connect(self.timer1Event)
         self.timer.start(1000)
