@@ -29,4 +29,4 @@ class FinalWin(QWidget):
         self.move(win_x, win_y)
 
     def result(self):
-        self.index = (4 * (int(self.exp.test1) + int(self.exp.test2) + int(self.exp.test3)))
+        self.index = (4*(int(self.exp.test1)+int(self.exp.test2)+int(self.exp.test3))-200)/10
