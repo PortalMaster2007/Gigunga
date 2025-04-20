@@ -32,7 +32,7 @@ class FinalWin(QWidget):
 
     def results(self):
         self.index = (4*(int(self.exp.test1)+int(self.exp.test2)+int(self.exp.test3))-200)/10
-        if self.exp.age >= 15:
+        if int(self.exp.age) >= 15:
             if self.index >= 15:
                 self.work_heart_rate = txt_res1
             elif self.index < 15 and self.index >= 11:
